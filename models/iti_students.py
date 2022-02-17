@@ -14,4 +14,5 @@ class ItiStudent(models.Model):
     image = fields.Binary()
     cv = fields.Html()
     login_time = fields.Datetime()
+    track_id = fields.Many2one("iti.track")
 
