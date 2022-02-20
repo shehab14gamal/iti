@@ -27,6 +27,10 @@
                             attrs="{'invisible':[('state','!=','applied')]}"/>
                       <button string="pass second interview" type="object" name="change_state"
                             attrs="{'invisible':[('state','!=','first')]}"/>
+                      <button string="Accepted" type="object" name="acc"
+                            attrs="{'invisible':[('state','!=','second')]}"/>
+                      <button string="Rejected" type="object" name="rejec"
+                            attrs="{'invisible':[('state','!=','second')]}"/>
 
                       <field name="state" widget="statusbar"/>
                   </header>

@@ -23,6 +23,11 @@ class ItiStudent(models.Model):
         ('rejected',"Rejected")
 
     ])
+    @api.model
+    def create(self, vals):
+       new_student = super().create(vals)
+       new_student.track_id.is_open = True
+       return new_student
 
     def change_state(self):
         if self.state == False:
@@ -31,7 +36,10 @@ class ItiStudent(models.Model):
             self.state = "first"
         elif self.state == "first" :
             self.state = "second"
-
+    def acc(self):
+        self.state = "accepted"
+    def rejec(self):
+        self.state ="rejected"
     track_id = fields.Many2one("iti.track")
     is_track_open = fields.Boolean(related="track_id.is_open")
     skills_ids = fields.Many2many("iti.skills")
