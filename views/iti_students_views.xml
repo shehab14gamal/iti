@@ -20,6 +20,16 @@
           <field name="model">iti.student</field>
           <field name="arch" type="xml">
               <form>
+                  <header>
+                    <button string="Applied" type="object" name="change_state"
+                            attrs="{'invisible':[('state','!=',False)]}"/>
+                      <button string="pass first interview" type="object" name="change_state"
+                            attrs="{'invisible':[('state','!=','applied')]}"/>
+                      <button string="pass second interview" type="object" name="change_state"
+                            attrs="{'invisible':[('state','!=','first')]}"/>
+
+                      <field name="state" widget="statusbar"/>
+                  </header>
                   <sheet>
                       <group>
                           <group string="Basic Info">

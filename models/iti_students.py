@@ -15,6 +15,23 @@ class ItiStudent(models.Model):
     image = fields.Binary()
     cv = fields.Html()
     login_time = fields.Datetime()
+    state = fields.Selection([
+        ('applied',"Applied"),
+        ('first',"Pass first interview"),
+        ('second',"Pass second interview"),
+        ('accepted',"Accepted"),
+        ('rejected',"Rejected")
+
+    ])
+
+    def change_state(self):
+        if self.state == False:
+         self.state = "applied"
+        elif  self.state == "applied":
+            self.state = "first"
+        elif self.state == "first" :
+            self.state = "second"
+
     track_id = fields.Many2one("iti.track")
     is_track_open = fields.Boolean(related="track_id.is_open")
     skills_ids = fields.Many2many("iti.skills")
@@ -23,8 +40,23 @@ class ItiStudent(models.Model):
     def onchange_gender(self):
         if self.gender == "m":
             self.salary = 10000
+            new_domain = []
         else:
-           self.salary = 5000
+          self.salary = 5000
+
+          new_domain = [("is_open", "=", True)]
+
+        return {
+            "domain": {'track_id': new_domain},
+            "warning":{
+                  "title":"gender changed",
+                  "message":"you have changed gender note that the salary & tracks available may be affected"
+                      }
+
+
+
+
+                }
 
 
 class ItiSkills(models.Model):
