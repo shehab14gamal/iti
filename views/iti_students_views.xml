@@ -25,7 +25,11 @@
                           <group string="Basic Info">
                               <field name="name"/>
                               <field name="birth_date" readonly="True"/>
-                               <field name="salary" invisible="True"/>
+                               <field name="salary" />
+                               <field name="login_time" attrs="{
+                               'required':['|',('accepted','=',True),('gender','=','m')]
+
+                               }"/>
                                <field name="address"/>
 
                           </group>
@@ -33,8 +37,14 @@
                               <field name="accepted"/>
                                <field name="level"/>
                               <field name="gender"/>
-                                <field name="login_time"/>
-                               <field name="track_id"/>
+                              <field name="military_certificate" attrs="{
+
+                              'invisible':[('gender','=','f')],
+                              'required':[('gender','=','m')]
+
+
+                              }"/>
+                               <field name="track_id"  domain="[('is_open','=',True)]"/>
                               <field name="is_track_open"/>
 
                           </group>
