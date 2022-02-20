@@ -10,8 +10,7 @@
           <field name="arch" type="xml">
               <tree>
                   <field name="name"/>
-                  <field name="birth_date"/>
-                  <field name="salary"/>
+                   <field name="track_id"/>
               </tree>
           </field>
       </record>
@@ -25,8 +24,8 @@
                       <group>
                           <group string="Basic Info">
                               <field name="name"/>
-                              <field name="birth_date"/>
-                               <field name="salary"/>
+                              <field name="birth_date" readonly="True"/>
+                               <field name="salary" invisible="True"/>
                                <field name="address"/>
 
                           </group>
@@ -36,13 +35,15 @@
                               <field name="gender"/>
                                 <field name="login_time"/>
                                <field name="track_id"/>
+                              <field name="is_track_open"/>
+
                           </group>
                       </group>
                       <notebook>
                           <page string="Image"><field name="image"/></page>
                            <page string="CV"> <field name="cv"/></page>
-
-
+                          <page string="Skills">
+                              <field name="skills_ids" widget="many2many_tags" /></page>
 
                       </notebook>
                   </sheet>
@@ -59,28 +60,11 @@
       #menus.......................................
       <menuitem id="iti_root" name="ITI"/>
      <menuitem id="iti_students_menu" name="students" parent="iti_root" action="students_action"/>
-
-#code for iti_tracks..................................................................................................
-
-      #view...................
-        <record id="tracks_tree_view" model="ir.ui.view">
-          <field name="name">tracks tee view</field>
-          <field name="model">iti.track</field>
-          <field name="arch" type="xml">
-              <tree>
-                  <field name="name"/>
-                  <field name="is_open"/>
-
-              </tree>
-          </field>
-      </record>
-          #action............
-       <record id="tracks_action" model="ir.actions.act_window">
-        <field name="name">tracks</field>
-        <field name="res_model">iti.track</field>
+      #skills.......................
+      <record id="skills_action" model="ir.actions.act_window">
+        <field name="name">Skills</field>
+        <field name="res_model">iti.skills</field>
      </record>
-      #menus.............
-      <menuitem id="iti_track" name="Tracks" parent="iti_root" action="tracks_action"/>
-
+   <menuitem id="iti_skills_menu" name="skills" parent="iti_root" action="skills_action"/>
   </data>
 </odoo>

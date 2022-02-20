@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+#code for iti_tracks..................................................................................................
+
+      #view...................
+        <record id="tracks_tree_view" model="ir.ui.view">
+          <field name="name">tracks tee view</field>
+          <field name="model">iti.track</field>
+          <field name="arch" type="xml">
+              <tree>
+                  <field name="track_name"/>
+                  <field name="is_open"/>
+
+              </tree>
+          </field>
+      </record>
+        <record id="tracks_form_view" model="ir.ui.view">
+          <field name="name">tracks form view</field>
+          <field name="model">iti.track</field>
+          <field name="arch" type="xml">
+              <form>
+                <sheet>
+                  <group string="Basic Info">
+                      <field name="track_name"/>
+                      <field name="is_open"/>
+                  </group>
+                  <notebook>
+                      <page string ="Students">
+                          <field name="student_ids">
+                              <tree>
+                                  <field name="name"/>
+                                  <field name="salary"/>
+                              </tree>
+
+
+
+                          </field>
+                      </page>
+                  </notebook>
+                </sheet>
+              </form>
+          </field>
+        </record>
+          #action............
+       <record id="tracks_action" model="ir.actions.act_window">
+        <field name="name">tracks</field>
+        <field name="res_model">iti.track</field>
+     </record>
+      #menus.............
+      <menuitem id="iti_track" name="Tracks" parent="iti_root" action="tracks_action"/>
+  </data>
+</odoo>

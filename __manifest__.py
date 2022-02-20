@@ -4,6 +4,7 @@
     "description": "first module containing students and tracks",
     "data":
     [
-        "views/iti_students_views.xml"
+        "views/iti_students_views.xml",
+        "views/iti_tracks.xml"
     ]
 }
