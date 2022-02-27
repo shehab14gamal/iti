@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+
+        <record id="hr_employee_inherit_tree_view" model="ir.ui.view">
+                    <field name="name">he employee tee view</field>
+                    <field name="model">hr.employee</field>
+                    <field name="inherit_id" ref="hr.view_employee_tree"/>
+                    <field name="arch" type="xml">
+                     <field name="job_id" position="after">
+
+                         <field name="national_id"/>
+                     </field>
+                 </field>
+      </record>
+
+         <record id="hr_employee_inherit_form_view" model="ir.ui.view">
+                    <field name="name">he employee form view</field>
+                    <field name="model">hr.employee</field>
+                    <field name="inherit_id" ref="hr.view_employee_form"/>
+                    <field name="arch" type="xml">
+                     <xpath expr="/form/sheet/group/group/field[@name = 'work_email']" position="before">
+
+                         <field name="national_id"/>
+                     </xpath>
+                        <field name="work_email" position="attributes">
+                            <attribute name="invisible">True</attribute>
+
+
+                        </field>
+                 </field>
+      </record>
+
+
+
+
+
+
+  </data>
+</odoo>

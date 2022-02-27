@@ -11,6 +11,9 @@
               <tree>
                   <field name="name"/>
                    <field name="track_id"/>
+                  <field name="salary"/>
+                  <field name="create_uid"/>
+                  <field name="create_date"/>
               </tree>
           </field>
       </record>
@@ -21,8 +24,7 @@
           <field name="arch" type="xml">
               <form>
                   <header>
-                    <button string="Applied" type="object" name="change_state"
-                            attrs="{'invisible':[('state','!=',False)]}"/>
+
                       <button string="pass first interview" type="object" name="change_state"
                             attrs="{'invisible':[('state','!=','applied')]}"/>
                       <button string="pass second interview" type="object" name="change_state"
@@ -39,12 +41,15 @@
                           <group string="Basic Info">
                               <field name="name"/>
                               <field name="birth_date" readonly="True"/>
-                               <field name="salary" />
+                               <field name="basic_salary" />
+                              <field name="bonus" />
+                              <field name="salary" />
                                <field name="login_time" attrs="{
                                'required':['|',('accepted','=',True),('gender','=','m')]
 
                                }"/>
                                <field name="address"/>
+                              <field name="mobile"/>
 
                           </group>
                           <group string="Extra Info">

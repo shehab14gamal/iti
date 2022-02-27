@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+
+        <record id ="iti_category" model="ir.module.category">
+
+            <field name="name">ITI</field>
+
+        </record>
+
+        <record id = "iti_staff_group" model ="res.groups">
+
+          <field name="name">staff</field>
+            <field name="category_id" ref="iti_category"/>
+            <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+
+        </record>
+
+        <record id = "iti_manager_group" model ="res.groups">
+
+          <field name="name">manager</field>
+            <field name="category_id" ref="iti_category"/>
+            <field name="implied_ids" eval="[(4,ref('iti_staff_group'))]"/>
+
+        </record>
+
+        <record id="own_students_rule" model="ir.rule">
+        <field name="name">own students rule</field>
+        <field name="model_id" ref="model_iti_student"/>
+        <field name="domain_force">[('create_uid', '=', user.id)]</field>
+    </record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </data>
+
+</odoo>
